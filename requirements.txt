@@ -1,7 +1,4 @@
 alabaster 
-anaconda-client==1.7.2
-anaconda-navigator==2.0.3
-anaconda-project 
 anyio==3.5.0
 AnyQt 
 appdirs==1.4.4
