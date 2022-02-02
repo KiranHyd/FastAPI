@@ -226,7 +226,6 @@ rfc3986
 rope 
 rsa==4.8
 Rtree 
-ruamel-yaml-conda 
 scikit-image==0.18.1
 scikit-learn 
 scikit-learn-intelex==2021.20210504.110836
