@@ -196,8 +196,6 @@ pylint
 pyls-black 
 pyls-spyder 
 pynndescent 
-pyodbc===4.0.0-unsupported
-PyOpenGL==3.1.1a1
 pyOpenSSL 
 pyparsing 
 pyqtgraph 
