@@ -43,14 +43,6 @@ cloudpickle
 clyent
 colorama 
 commonmark==0.9.1
-conda==4.10.3
-conda-build==3.20.5
-conda-content-trust 
-conda-pack 
-conda-package-handling 
-conda-repo-cli 
-conda-token 
-conda-verify==3.4.2
 contextlib2==0.6.0.post1
 cookiecutter 
 cryptography 
