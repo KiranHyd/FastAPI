@@ -78,5 +78,5 @@ def read_accounts(skip: int = 0, limit: int = 100, db: Session = Depends(databas
 
 
 
-if __name__ == '__main__':
-    uvicorn.run('main:app', server_header=False)
+# if __name__ == '__main__':
+#     uvicorn.run('main:app', server_header=False)
