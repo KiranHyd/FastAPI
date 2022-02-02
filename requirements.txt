@@ -40,7 +40,7 @@ cffi
 chardet 
 click 
 cloudpickle 
-clyent==1.2.2
+clyent
 colorama 
 commonmark==0.9.1
 conda==4.10.3
