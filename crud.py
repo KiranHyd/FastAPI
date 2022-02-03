@@ -276,6 +276,15 @@ def initialize_database():
                     state_ladakh,
                     state_lakshadweep,
                     state_puducherry])
+
+        country_other = db.query(models.Country).filter(func.lower(models.Country.country) == 'other').first()
+        if country_other is not None:
+            country_other_id = country_other.countryId
+            state_other = models.StateOrProvince()
+            state_other.stateOrProvince = 'Other'
+            state_other.countryId = country_other_id
+            state_other.disabled = False
+    
     db.commit()
     
     gender_count = db.query(func.count(models.Gender.genderId)).scalar()
