@@ -72,9 +72,174 @@ def initialize_database():
             state_assam.stateOrProvince = 'Assam'
             state_assam.countryId = country_india_id
 
+            state_bihar = models.StateOrProvince()
+            state_bihar.stateOrProvince = 'Bihar'
+            state_bihar.countryId = country_india_id
+
+            state_chhattisgarh = models.StateOrProvince()
+            state_chhattisgarh.stateOrProvince = 'Chhattisgarh'
+            state_chhattisgarh.countryId = country_india_id
+
+            state_goa = models.StateOrProvince()
+            state_goa.stateOrProvince = 'Goa'
+            state_goa.countryId = country_india_id
+
+            state_gujarat = models.StateOrProvince()
+            state_gujarat.stateOrProvince = 'Gujarat'
+            state_gujarat.countryId = country_india_id
+
+            state_haryana = models.StateOrProvince()
+            state_haryana.stateOrProvince = 'Haryana'
+            state_haryana.countryId = country_india_id
+
+            state_himachal = models.StateOrProvince()
+            state_himachal.stateOrProvince = 'Himachal Pradesh'
+            state_himachal.countryId = country_india_id
+
+            state_jharkhand = models.StateOrProvince()
+            state_jharkhand.stateOrProvince = 'Jharkhand'
+            state_jharkhand.countryId = country_india_id
+
+            state_karnataka = models.StateOrProvince()
+            state_karnataka.stateOrProvince = 'Karnataka'
+            state_karnataka.countryId = country_india_id
+
+            state_kerala = models.StateOrProvince()
+            state_kerala.stateOrProvince = 'Kerala'
+            state_kerala.countryId = country_india_id
+
+            state_madhya_pradesh = models.StateOrProvince()
+            state_madhya_pradesh.stateOrProvince = 'Madhya Pradesh'
+            state_madhya_pradesh.countryId = country_india_id
+
+            state_maharashtra = models.StateOrProvince()
+            state_maharashtra.stateOrProvince = 'Maharashtra'
+            state_maharashtra.countryId = country_india_id
+
+            state_manipur = models.StateOrProvince()
+            state_manipur.stateOrProvince = 'Manipur'
+            state_manipur.countryId = country_india_id
+
+            state_meghalaya = models.StateOrProvince()
+            state_meghalaya.stateOrProvince = 'Meghalaya'
+            state_meghalaya.countryId = country_india_id
+
+            state_mizoram = models.StateOrProvince()
+            state_mizoram.stateOrProvince = 'Mizoram'
+            state_mizoram.countryId = country_india_id
+
+            state_nagaland = models.StateOrProvince()
+            state_nagaland.stateOrProvince = 'Nagaland'
+            state_nagaland.countryId = country_india_id
+
+            state_odisha = models.StateOrProvince()
+            state_odisha.stateOrProvince = 'Odisha'
+            state_odisha.countryId = country_india_id
+
+            state_punjab = models.StateOrProvince()
+            state_punjab.stateOrProvince = 'Punjab'
+            state_punjab.countryId = country_india_id
+
+            state_rajasthan = models.StateOrProvince()
+            state_rajasthan.stateOrProvince = 'Rajasthan'
+            state_rajasthan.countryId = country_india_id
+
+            state_sikkim = models.StateOrProvince()
+            state_sikkim.stateOrProvince = 'Sikkim'
+            state_sikkim.countryId = country_india_id
+
+            state_tamilnadu = models.StateOrProvince()
+            state_tamilnadu.stateOrProvince = 'Tamil Nadu'
+            state_tamilnadu.countryId = country_india_id
+
+            state_telangana = models.StateOrProvince()
+            state_telangana.stateOrProvince = 'Telangana'
+            state_telangana.countryId = country_india_id
+
+            state_tripura = models.StateOrProvince()
+            state_tripura.stateOrProvince = 'Tripura'
+            state_tripura.countryId = country_india_id
+
+            state_uttar_pradesh = models.StateOrProvince()
+            state_uttar_pradesh.stateOrProvince = 'Uttar Pradesh'
+            state_uttar_pradesh.countryId = country_india_id
+
+            state_uttarakhand = models.StateOrProvince()
+            state_uttarakhand.stateOrProvince = 'Uttarakhand'
+            state_uttarakhand.countryId = country_india_id
+
+            state_westbengal = models.StateOrProvince()
+            state_westbengal.stateOrProvince = 'West Bengal'
+            state_westbengal.countryId = country_india_id
+
+            state_andaman_nicobar = models.StateOrProvince()
+            state_andaman_nicobar.stateOrProvince = 'Andaman and Nicobar Islands'
+            state_andaman_nicobar.countryId = country_india_id
+
+            state_chandigarh = models.StateOrProvince()
+            state_chandigarh.stateOrProvince = 'Chandigarh'
+            state_chandigarh.countryId = country_india_id
+
+            state_dadra_and_nagar_haveli_and_daman_and_diu = models.StateOrProvince()
+            state_dadra_and_nagar_haveli_and_daman_and_diu.stateOrProvince = 'Dadra and Nagar Haveli and Daman and Diu'
+            state_dadra_and_nagar_haveli_and_daman_and_diu.countryId = country_india_id
+
+            state_delhi = models.StateOrProvince()
+            state_delhi.stateOrProvince = 'Delhi'
+            state_delhi.countryId = country_india_id
+
+            state_jammu_and_kashmir = models.StateOrProvince()
+            state_jammu_and_kashmir.stateOrProvince = 'Jammu and Kashmir'
+            state_jammu_and_kashmir.countryId = country_india_id
+
+            state_ladakh = models.StateOrProvince()
+            state_ladakh.stateOrProvince = 'Ladakh'
+            state_ladakh.countryId = country_india_id
+
+            state_lakshadweep = models.StateOrProvince()
+            state_lakshadweep.stateOrProvince = 'Lakshadweep'
+            state_lakshadweep.countryId = country_india_id
+
+            state_puducherry = models.StateOrProvince()
+            state_puducherry.stateOrProvince = 'Puducherry'
+            state_puducherry.countryId = country_india_id
+
             db.add_all([state_andhra, 
                     state_arunachal,
-                    state_assam])
+                    state_assam,
+                    state_bihar,
+                    state_chhattisgarh,
+                    state_goa,
+                    state_gujarat,
+                    state_haryana,
+                    state_himachal,
+                    state_jharkhand,
+                    state_karnataka,
+                    state_kerala,
+                    state_madhya_pradesh,
+                    state_maharashtra,
+                    state_manipur,
+                    state_meghalaya,
+                    state_mizoram,
+                    state_nagaland,
+                    state_odisha,
+                    state_punjab,
+                    state_rajasthan,
+                    state_sikkim,
+                    state_tamilnadu,
+                    state_telangana,
+                    state_tripura,
+                    state_uttar_pradesh,
+                    state_uttarakhand,
+                    state_westbengal,
+                    state_andaman_nicobar,
+                    state_chandigarh,
+                    state_dadra_and_nagar_haveli_and_daman_and_diu,
+                    state_delhi,
+                    state_jammu_and_kashmir,
+                    state_ladakh,
+                    state_lakshadweep,
+                    state_puducherry,])
 
 
     db.commit()
