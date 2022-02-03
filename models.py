@@ -114,7 +114,8 @@ class User(Base):
     
     accounts = relationship("Account", back_populates="owner")
     transactions = relationship("Transaction", back_populates="transactionUser")
-
+    activityLog = relationship("ActivityLog", back_populates="user")
+    errorLog = relationship("ErrorLog", back_populates="user")
     
 
 class Account(Base):
@@ -165,10 +166,26 @@ class AppConfig(Base):
     createdByUser = relationship("User", back_populates="appConfig")
     modifiedByUser = relationship("User", back_populates="appConfig")
 
-    # activityDescription = Column(String)
-    # activityTimeStamp = Column(DateTime)
-    # urlOrModule = Column(String)
-    # activityId = Column(Integer, ForeignKey("activityTypes.activityTypeId"))
-    # userId = Column(Integer, ForeignKey("users.userId"))
+class ActivityLog(Base):
+    __tablename__ = "activityLog"
     
-    # user = relationship("User", back_populates="appConfig")
+    activityId = Column(Integer, primary_key=True, index = True)
+    description = Column(String)
+    activityTimeStamp = Column(DateTime)
+    urlOrModule = Column(String)
+    activityTypeId = Column(Integer, ForeignKey("activityTypes.activityTypeId"))
+    userId = Column(Integer, ForeignKey("users.userId"))
+    
+    user = relationship("User", back_populates="activityLog")
+
+class ErrorLog(Base):
+    __tablename__ = "errorLog"
+    
+    errorId = Column(Integer, primary_key=True, index = True)
+    description = Column(String)
+    errorTimeStamp = Column(DateTime)
+    urlOrModule = Column(String)
+    errorTypeId = Column(Integer, ForeignKey("errorTypes.errorTypeId"))
+    userId = Column(Integer, ForeignKey("users.userId"))
+    
+    user = relationship("User", back_populates="errorLog")
