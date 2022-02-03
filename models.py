@@ -112,7 +112,8 @@ class User(Base):
     maritalStatus = relationship("MaritalStatus", back_populates="users")
     stateOrProvince = relationship("StateOrProvince", back_populates="users")
     
-    accounts = relationship("Account", back_populates="owner")
+    ownerAccounts = relationship("Account", back_populates="owner")
+    #agentAccounts = relationship("Account", back_populates="agent")
     transactions = relationship("Transaction", back_populates="transactionUser")
     activityLog = relationship("ActivityLog", back_populates="user")
     errorLog = relationship("ErrorLog", back_populates="user")
@@ -130,12 +131,13 @@ class Account(Base):
     createdAt = Column(DateTime)
     modifiedAt = Column(DateTime)
     ownerId = Column(Integer, ForeignKey("users.userId"))
-    agentId = Column(Integer, ForeignKey("users.userId"))
+    agentId = Column(Integer, index=True)
     accountTypeId = Column(Integer, ForeignKey("accountTypes.accountTypeId"))
     
-    owner = relationship("User", back_populates="accounts")
-    agent = relationship("User", back_populates="accounts")
+    owner = relationship("User", back_populates="ownerAccounts")
+    #agent = relationship("User", back_populates="agentAccounts")
     accountType = relationship("AccountType", back_populates="accounts")
+    transactions = relationship("Transaction", back_populates="account")
 
 class Transaction(Base):
     __tablename__ = "transactions"
@@ -148,7 +150,7 @@ class Transaction(Base):
     accountId = Column(Integer, ForeignKey("accounts.accountId"))
     transactionById = Column(Integer, ForeignKey("users.userId"))
 
-    Account = relationship("Account", back_populates="transactions")
+    account = relationship("Account", back_populates="transactions")
     transactionUser = relationship("User", back_populates="transactions")
 
 class AppConfig(Base):
@@ -163,8 +165,8 @@ class AppConfig(Base):
     createdById = Column(Integer, ForeignKey("users.userId"))
     updatedById = Column(Integer, ForeignKey("users.userId"))
 
-    createdByUser = relationship("User", back_populates="appConfig")
-    modifiedByUser = relationship("User", back_populates="appConfig")
+    # createdByUser = relationship("User", back_populates="appConfig")
+    # modifiedByUser = relationship("User", back_populates="appConfig")
 
 class ActivityLog(Base):
     __tablename__ = "activityLog"

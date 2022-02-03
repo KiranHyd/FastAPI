@@ -49,6 +49,88 @@ class StateOrProvince(StateOrProvinceBase):
     class Config:
         orm_mode = True
 
+class GenderBase(BaseModel):
+    gender: str
+    disabled: bool
+
+class Gender(GenderBase):
+    genderId: int
+    class Config:
+        orm_mode = True
+class MaritalStatusBase(BaseModel):
+    maritalStatus: str
+    disabled: bool
+
+class MaritalStatus(MaritalStatusBase):
+    maritalStatusId: int
+    class Config:
+        orm_mode = True
+
+class ProfessionTypeBase(BaseModel):
+    professionType: str
+    description: str
+    disabled: bool
+
+class ProfessionType(ProfessionTypeBase):
+    professionTypeId: int
+    class Config:
+        orm_mode = True
+
+
+
+class AccountTypeBase(BaseModel):
+    accountType: str
+    description: str
+    disabled: bool
+
+class AccountType(AccountTypeBase):
+    accountTypeId: int
+    class Config:
+        orm_mode = True
+       
+
+class ActivityTypeBase(BaseModel):
+    activityType: str
+    description: str
+class ActivityType(ActivityTypeBase):
+    activityTypeId: int
+    class Config:
+        orm_mode = True
+
+class ErrorTypeBase(BaseModel):
+    errorType: str
+    description: str
+class ErrorType(ErrorTypeBase):
+    errorTypeId: int
+    class Config:
+        orm_mode = True
+
+class ActivityLogBase(BaseModel):
+    description: str
+    activityTimeStamp: datetime
+    urlOrModule: str
+    activityTypeId: str
+    userId: int
+
+class ActivityLogCreate(ActivityLogBase):
+    pass
+
+class ActivityLog(ActivityLogBase):
+    activityId: int
+    
+class ErrorLogBase(BaseModel):
+    description: str
+    errorTimeStamp: datetime
+    urlOrModule: str
+    errorTypeId: str
+    userId: int
+
+class ErrorLogCreate(ErrorLogBase):
+    pass
+
+class ErrorLog(ErrorLogBase):
+    errorId: int
+
 class AppConfigBase(BaseModel):
     configName: str
     description: str
@@ -78,7 +160,6 @@ class AccountBase(BaseModel):
 class AccountCreate(AccountBase):
     pass
 
-
 class Account(AccountBase):
     accountId: int
     disabled: bool
@@ -97,7 +178,6 @@ class TransactionBase(BaseModel):
 
 class TransactionCreate(TransactionBase):
     pass
-
 
 class Transaction(TransactionBase):
     transactionId: int
