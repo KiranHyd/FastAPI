@@ -280,20 +280,92 @@ def initialize_database():
     
     gender_count = db.query(func.count(models.Gender.genderId)).scalar()
     if gender_count == 0:
-        gender_male = models.Gender()
-        gender_male.gender = 'Male'
-        gender_male.disabled = False
-
         gender_female = models.Gender()
         gender_female.gender = 'Female'
         gender_female.disabled = False
+
+        gender_male = models.Gender()
+        gender_male.gender = 'Male'
+        gender_male.disabled = False
 
         gender_other = models.Gender()
         gender_other.gender = 'Other'
         gender_other.disabled = False
 
-        db.add_all([gender_male, gender_female, gender_other])
+        db.add_all([gender_female, gender_male, gender_other])
         db.commit()
+
+    maritalStatus_count = db.query(func.count(models.MaritalStatus.maritalStatusId)).scalar()
+    if maritalStatus_count == 0:
+        maritalStatus_divorced = models.MaritalStatus()
+        maritalStatus_divorced.maritalStatus = 'Divorced'
+        maritalStatus_divorced.disabled = False
+
+        maritalStatus_married = models.MaritalStatus()
+        maritalStatus_married.maritalStatus = 'Married'
+        maritalStatus_married.disabled = False
+
+        maritalStatus_unmarried = models.MaritalStatus()
+        maritalStatus_unmarried.maritalStatus = 'Unmarried'
+        maritalStatus_unmarried.disabled = False
+
+        maritalStatus_widowed = models.MaritalStatus()
+        maritalStatus_widowed.maritalStatus = 'Widowed'
+        maritalStatus_widowed.disabled = False
+
+        db.add_all([maritalStatus_divorced, maritalStatus_married, maritalStatus_unmarried, maritalStatus_widowed])
+        db.commit()
+
+    professionType_count = db.query(func.count(models.ProfessionType.professionTypeId)).scalar()
+    if professionType_count == 0:
+        
+        professionType_none = models.ProfessionType()
+        professionType_none.professionType = 'None'
+        professionType_none.disabled = False
+
+        professionType_business = models.ProfessionType()
+        professionType_business.professionType = 'Business'
+        professionType_business.disabled = False
+
+        professionType_daily_worker = models.ProfessionType()
+        professionType_daily_worker.professionType = 'Daily Worker'
+        professionType_daily_worker.disabled = False
+
+        professionType_farmer = models.ProfessionType()
+        professionType_farmer.professionType = 'Farmer'
+        professionType_farmer.disabled = False
+
+        professionType_government_employee = models.ProfessionType()
+        professionType_government_employee.professionType = 'Government Employee'
+        professionType_government_employee.disabled = False
+
+        professionType_private_employee = models.ProfessionType()
+        professionType_private_employee.professionType = 'Private Employee'
+        professionType_private_employee.disabled = False
+     
+        db.add_all([professionType_none,
+                    professionType_business, 
+                    professionType_daily_worker,
+                    professionType_farmer,
+                    professionType_government_employee,
+                    professionType_private_employee 
+                    ])
+        db.commit()
+
+    accountType_count = db.query(func.count(models.AccountType.accountTypeId)).scalar()
+    if accountType_count == 0:
+        accountType_secured_loan = models.AccountType()
+        accountType_secured_loan.accountType = 'Secured Loan'
+        accountType_secured_loan.disabled = False
+
+        accountType_unsecured_loan = models.AccountType()
+        accountType_unsecured_loan.accountType = 'Unsecured Loan'
+        accountType_unsecured_loan.disabled = False
+
+        db.add_all([accountType_secured_loan, accountType_unsecured_loan])
+        db.commit()
+
+
 
 
 
