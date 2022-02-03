@@ -239,7 +239,7 @@ def initialize_database():
                     state_jammu_and_kashmir,
                     state_ladakh,
                     state_lakshadweep,
-                    state_puducherry,])
+                    state_puducherry])
 
 
     db.commit()
