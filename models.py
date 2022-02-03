@@ -9,6 +9,7 @@ class Country(Base):
 
     countryId = Column(Integer, primary_key=True, index=True)
     country = Column(String, unique=True, index=True)
+    disabled = Column(Boolean, default=False)
 
     stateOrProvinces = relationship("StateOrProvince", back_populates="country")
     
@@ -18,6 +19,7 @@ class StateOrProvince(Base):
     stateOrProvinceId = Column(Integer, primary_key=True, index=True)
     stateOrProvince = Column(String, unique=True, index=True)
     countryId = Column(Integer, ForeignKey("countries.countryId"))
+    disabled = Column(Boolean, default=False)
 
     country = relationship("Country", back_populates="stateOrProvinces")
 
@@ -28,6 +30,7 @@ class Gender(Base):
 
     genderId = Column(Integer, primary_key=True, index=True)
     gender = Column(String, unique=True, index=True)
+    disabled = Column(Boolean, default=False)
 
     users = relationship("User", back_populates="gender")
     
@@ -36,6 +39,7 @@ class MaritalStatus(Base):
 
     maritalStatusId = Column(Integer, primary_key=True, index=True)
     maritalStatus = Column(String, unique=True, index=True)
+    disabled = Column(Boolean, default=False)
 
     users = relationship("User", back_populates="maritalStatus")
 
@@ -45,6 +49,7 @@ class ProfessionType(Base):
     professionTypeId = Column(Integer, primary_key=True, index=True)
     professionType = Column(String, unique=True, index=True)
     description = Column(String)
+    disabled = Column(Boolean, default=False)
 
     users = relationship("User", back_populates="profession")
     
@@ -54,6 +59,7 @@ class AccountType(Base):
     accountTypeId = Column(Integer, primary_key=True, index=True)
     accountType = Column(String, unique=True, index=True)
     description = Column(String)
+    disabled = Column(Boolean, default=False)
 
     accounts = relationship("Account", back_populates="accountType")
 
@@ -119,6 +125,7 @@ class Account(Base):
     description = Column(String)
     rateOfInterest = Column(Float)
     balance = Column(Float)
+    disabled = Column(Boolean, default=False)
     createdAt = Column(DateTime)
     modifiedAt = Column(DateTime)
     ownerId = Column(Integer, ForeignKey("users.userId"))

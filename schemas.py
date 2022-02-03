@@ -36,6 +36,7 @@ class CountryBase(BaseModel):
 
 class Country(CountryBase):
     countryId: int
+    disabled: bool
     class Config:
         orm_mode = True
 
@@ -44,6 +45,7 @@ class StateOrProvinceBase(BaseModel):
 
 class StateOrProvince(StateOrProvinceBase):
     stateOrProvinceId: int
+    disabled: bool
     class Config:
         orm_mode = True
 
@@ -61,6 +63,7 @@ class AppConfig(AppConfigBase):
     updatedDateTime: datetime
     createdById: int
     updatedById: int
+    disabled: bool
     class Config:
         orm_mode = True
 
@@ -78,6 +81,7 @@ class AccountCreate(AccountBase):
 
 class Account(AccountBase):
     accountId: int
+    disabled: bool
     createdAt: datetime
     modifiedAt: datetime
     class Config:
