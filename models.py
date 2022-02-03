@@ -55,6 +55,8 @@ class AccountType(Base):
     accountType = Column(String, unique=True, index=True)
     description = Column(String)
 
+    accounts = relationship("Account", back_populates="accountType")
+
 class ActivityType(Base):
     __tablename__ = "activityTypes"
 
@@ -104,17 +106,62 @@ class User(Base):
     maritalStatus = relationship("MaritalStatus", back_populates="users")
     stateOrProvince = relationship("StateOrProvince", back_populates="users")
     
-    
     accounts = relationship("Account", back_populates="owner")
+    transactions = relationship("Transaction", back_populates="transactionUser")
+
     
 
 class Account(Base):
     __tablename__ = "accounts"
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    description = Column(String, index=True)
+    accountId = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    description = Column(String)
+    rateOfInterest = Column(Float)
+    balance = Column(Float)
     createdAt = Column(DateTime)
-    owner_id = Column(Integer, ForeignKey("users.userId"))
+    modifiedAt = Column(DateTime)
+    ownerId = Column(Integer, ForeignKey("users.userId"))
+    agentId = Column(Integer, ForeignKey("users.userId"))
+    accountTypeId = Column(Integer, ForeignKey("accountTypes.accountTypeId"))
     
     owner = relationship("User", back_populates="accounts")
+    agent = relationship("User", back_populates="accounts")
+    accountType = relationship("AccountType", back_populates="accounts")
+
+class Transaction(Base):
+    __tablename__ = "transactions"
+    transactionId = Column(Integer, primary_key=True, index=True)
+    transactionAmount = Column(Float)
+    balance = Column(Float)
+    refOrChequeNo = Column(String)
+    description = Column(String)
+    transactionDateTime = Column(DateTime)
+    accountId = Column(Integer, ForeignKey("accounts.accountId"))
+    transactionById = Column(Integer, ForeignKey("users.userId"))
+
+    Account = relationship("Account", back_populates="transactions")
+    transactionUser = relationship("User", back_populates="transactions")
+
+class AppConfig(Base):
+    __tablename__ = "appConfig"
+
+    configId = Column(Integer, primary_key=True, index = True)
+    configName = Column(String, unique=True)
+    description = Column(String)
+    configValue = Column(String)
+    createdDateTime = Column(DateTime)
+    updatedDateTime = Column(DateTime)
+    createdById = Column(Integer, ForeignKey("users.userId"))
+    updatedById = Column(Integer, ForeignKey("users.userId"))
+
+    createdByUser = relationship("User", back_populates="appConfig")
+    modifiedByUser = relationship("User", back_populates="appConfig")
+
+    # activityDescription = Column(String)
+    # activityTimeStamp = Column(DateTime)
+    # urlOrModule = Column(String)
+    # activityId = Column(Integer, ForeignKey("activityTypes.activityTypeId"))
+    # userId = Column(Integer, ForeignKey("users.userId"))
+    
+    # user = relationship("User", back_populates="appConfig")

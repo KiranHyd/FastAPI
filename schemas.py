@@ -42,27 +42,64 @@ class Country(CountryBase):
 class StateOrProvinceBase(BaseModel):
     stateOrProvince: str
 
-class StateOrProvince(CountryBase):
+class StateOrProvince(StateOrProvinceBase):
     stateOrProvinceId: int
+    class Config:
+        orm_mode = True
+
+class AppConfigBase(BaseModel):
+    configName: str
+    description: str
+    configValue: str
+
+class AppConfigCreate(AppConfigBase):
+    pass
+
+class AppConfig(AppConfigBase):
+    configId: int
+    createdDateTime: datetime
+    updatedDateTime: datetime
+    createdById: int
+    updatedById: int
     class Config:
         orm_mode = True
 
 class AccountBase(BaseModel):
     name: str
     description: Optional[str] = None
-
+    rateOfInterest: float
+    balance: float
+    ownerId: int
+    agentId: int
 
 class AccountCreate(AccountBase):
     pass
 
 
 class Account(AccountBase):
-    id: int
-    owner_id: int
-
+    accountId: int
+    createdAt: datetime
+    modifiedAt: datetime
     class Config:
         orm_mode = True
 
+class TransactionBase(BaseModel):
+    transactionAmount: float
+    balance: float
+    refOrChequeNo: str
+    description: str
+    accountId: int
+
+
+class TransactionCreate(TransactionBase):
+    pass
+
+
+class Transaction(TransactionBase):
+    transactionId: int
+    transactionDateTime: datetime
+    class Config:
+        orm_mode = True
 
 class UserBase(BaseModel):
     adhaarRegisteredMobileNumber: str
