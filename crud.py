@@ -29,7 +29,7 @@ def get_accounts(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_user_account(db: Session, account: schemas.AccountCreate, user_id: int):
-    db_account = models.Account(**account.dict(), owner_id=user_id)
+    db_account = models.Account(**account.dict(), ownerId=user_id)
     db.add(db_account)
     db.commit()
     db.refresh(db_account)
