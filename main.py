@@ -9,6 +9,7 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
 models.Base.metadata.create_all(bind=engine)
+crud.initialize_database()
 
 app = FastAPI()
 
@@ -25,7 +26,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         )
     access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = auth.create_access_token(
-        data={"sub": user.mobile}, expires_delta=access_token_expires
+        data={"sub": user.adhaarRegisteredMobileNumber}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
 
@@ -37,13 +38,13 @@ async def read_users_me(current_user: schemas.User = Depends(auth.get_current_ac
 
 @app.get("/users/me/accounts/")
 async def read_own_accounts(current_user: schemas.User = Depends(auth.get_current_active_user)):
-    return [{"account_id": "Foo", "owner": current_user.mobile}]
+    return [{"account_id": "Foo", "owner": current_user.adhaarRegisteredMobileNumber}]
 
 
 
 @app.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
-    db_user = crud.get_user_by_mobile(db, mobile=user.mobile)
+    db_user = crud.get_user_by_mobile(db, mobile=user.adhaarRegisteredMobileNumber)
     if db_user:
         raise HTTPException(status_code=400, detail="Mobile already registered")
     user.password = auth.get_password_hash(user.password)
@@ -78,5 +79,5 @@ def read_accounts(skip: int = 0, limit: int = 100, db: Session = Depends(databas
 
 
 
-# if __name__ == '__main__':
-#     uvicorn.run('main:app', server_header=False)
+if __name__ == '__main__':
+    uvicorn.run('main:app', server_header=False)

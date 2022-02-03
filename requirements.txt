@@ -1,5 +1,6 @@
-fastapi
-FastAPI-SQLAlchemy
+pydantic
+fastapi==0.72.0
+FastAPI-SQLAlchemy==0.2.1
 uvicorn
 gunicorn
 python-multipart
