@@ -76,8 +76,6 @@ class ProfessionType(ProfessionTypeBase):
     class Config:
         orm_mode = True
 
-
-
 class AccountTypeBase(BaseModel):
     accountType: str
     description: str
@@ -88,6 +86,16 @@ class AccountType(AccountTypeBase):
     class Config:
         orm_mode = True
        
+
+class AccountStatusBase(BaseModel):
+    accountStatus: str
+    description: str
+    disabled: bool
+
+class AccountStatus(AccountStatusBase):
+    accountStatusId: int
+    class Config:
+        orm_mode = True
 
 class ActivityTypeBase(BaseModel):
     activityType: str
@@ -156,6 +164,8 @@ class AccountBase(BaseModel):
     balance: float
     ownerId: int
     agentId: int
+    accountTypeId: int
+    AccountStatusId: int
 
 class AccountCreate(AccountBase):
     pass
@@ -163,8 +173,9 @@ class AccountCreate(AccountBase):
 class Account(AccountBase):
     accountId: int
     disabled: bool
-    createdAt: datetime
+    openedAt: datetime
     modifiedAt: datetime
+    closedAt: datetime
     class Config:
         orm_mode = True
 

@@ -63,6 +63,16 @@ class AccountType(Base):
 
     accounts = relationship("Account", back_populates="accountType")
 
+class AccountStatus(Base):
+    __tablename__ = "accountStatuses"
+
+    accountStatusId = Column(Integer, primary_key=True, index=True)
+    accountStatus = Column(String, unique=True, index=True)
+    description = Column(String)
+    disabled = Column(Boolean, default=False)
+
+    accounts = relationship("Account", back_populates="accountStatus")
+
 class ActivityType(Base):
     __tablename__ = "activityTypes"
 
@@ -128,15 +138,18 @@ class Account(Base):
     rateOfInterest = Column(Float)
     balance = Column(Float)
     disabled = Column(Boolean, default=False)
-    createdAt = Column(DateTime)
+    openedAt = Column(DateTime)
     modifiedAt = Column(DateTime)
+    closedAt = Column(DateTime)
     ownerId = Column(Integer, ForeignKey("users.userId"))
     agentId = Column(Integer, index=True)
     accountTypeId = Column(Integer, ForeignKey("accountTypes.accountTypeId"))
+    accountStatusId = Column(Integer, ForeignKey("accountStatuses.accountStatusId"))
     
     owner = relationship("User", back_populates="ownerAccounts")
     #agent = relationship("User", back_populates="agentAccounts")
     accountType = relationship("AccountType", back_populates="accounts")
+    accountStatus = relationship("AccountStatus", back_populates="accounts")
     transactions = relationship("Transaction", back_populates="account")
 
 class Transaction(Base):
